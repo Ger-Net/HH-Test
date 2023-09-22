@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-public abstract class Item : ScriptableObject
+public class Item : MonoBehaviour
 {
-    [SerializeField] private Texture2D _icon;
-    public Texture2D Icon => _icon;
-    public abstract void Use();
+    [SerializeField] private ItemData _data;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    public ItemData Data => _data;
+    private void Awake()
+    {
+        _spriteRenderer.sprite = _data.Icon;
+    }
 }
+

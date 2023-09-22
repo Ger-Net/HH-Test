@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class Weapon : Item
+public class Weapon : ItemData
 {
     [SerializeField] private int _damage;
-    public override void Use()
+    [SerializeField] private int _magazine;
+
+    public void Reload(int value)
     {
+        _magazine = value;
+    }
+    public void Attack(Enemy enemy)
+    {
+        _magazine--;
+        enemy.TakeDamage(_damage);
     }
 }

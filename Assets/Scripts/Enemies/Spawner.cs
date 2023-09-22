@@ -5,14 +5,16 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private EnemyFactory _enemyFactory;
-    [SerializeField] private Player _player;
 
     [SerializeField] private int _count;
     [SerializeField] private int _minRadius;
     [SerializeField] private int _maxRadius;
+    
+    private Player _player;
 
     private void Start()
     {
+        _player = Player.Instance;
         for (int i = 0; i < _count; i++)
         {
             Enemy enemy = _enemyFactory.Get(GetRandomEnemy());
